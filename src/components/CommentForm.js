@@ -19,6 +19,7 @@ const CommentForm = ()=>{
 		<form className= "w-100 pe-5" onSubmit={handleSubmit}>
 			<div className="form-group">
 				<textarea
+					style={{backgroundColor: "back",opacity: 0.3}}
 					className="form-control"
 					required aria-required="true"
 					placeholder="What are yours thoughts?"

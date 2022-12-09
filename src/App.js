@@ -10,8 +10,8 @@ function App() {
   return (
     <Container>
     <Routes>
-        <Route path='/login' element={<LoginScreen />} />   
-        <Route path='/' element={<CommentListScreen/>} exact="true"/> 
+        <Route path='/' element={<CommentListScreen/>}/> 
+        <Route path='/login' element={<LoginScreen />} />
     </Routes>
   </Container>
   );

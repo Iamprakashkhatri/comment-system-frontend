@@ -24,6 +24,7 @@ const ReplyForm=({comment})=>{
 		  	<form className="mt-5" onSubmit={handleSubmit}>
 		  		<div className="form-group">
 		  			<textarea placeholder="Do reply.." 
+		  					style={{backgroundColor: "back",opacity: 0.2}}
 		  					className="form-control"
 		  					required aria-required="true"
 		  					value={reply}

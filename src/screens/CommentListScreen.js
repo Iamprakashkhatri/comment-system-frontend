@@ -27,11 +27,11 @@ function CommentListScreen() {
     console.log('i',userInfo===null)
 
     useEffect(() => {
-        if (userInfo===null) {
-            navigate('/login')
+        if (userInfo) {
+            dispatch(listComments());
         }
         else{
-            dispatch(listComments());
+            navigate('/login')
         }
 
     }, [dispatch,navigate,userInfo])

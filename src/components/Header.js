@@ -20,7 +20,7 @@ function Header() {
     }
 
     return (
-        <header style={{marginTop:20}} className="btn">
+        <header style={{marginTop:20,marginLeft:990}} className="btn">
             <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect >
                 <Container>
                     <LinkContainer to='/'>

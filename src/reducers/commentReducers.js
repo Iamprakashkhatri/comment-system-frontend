@@ -11,6 +11,10 @@ import {
     REPLY_CREATE_SUCCESS,
     REPLY_CREATE_FAIL,
 
+    REPLY_LIST_REQUEST,
+    REPLY_LIST_SUCCESS,
+    REPLY_LIST_FAIL,
+
 } from '../constants/commentConstants'
 
 
@@ -59,6 +63,26 @@ export const replyCreateReducer = (state = {}, action) => {
 
         case REPLY_CREATE_FAIL:
             return { loading: false, error: action.payload }
+
+        default:
+            return state
+    }
+}
+
+export const replyListReducer = (state = { replies: [] }, action) => {
+    switch (action.type) {
+        case REPLY_LIST_REQUEST:
+            return { loading: true, replies: [] }
+
+        case REPLY_LIST_SUCCESS:
+            return {
+                loading: false,
+                replies: action.payload.results,
+                pages: action.payload.count,
+                page: 1
+            }
+        case REPLY_LIST_FAIL:
+            return { loading: false, error: action.payload.replies }
 
         default:
             return state

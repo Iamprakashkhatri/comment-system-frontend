@@ -7,6 +7,7 @@ import {
     commentListReducer,
     commentCreateReducer,
     replyCreateReducer,
+    replyListReducer,
 } from './reducers/commentReducers'
 
 import {
@@ -18,6 +19,8 @@ import {
 const reducer = combineReducers({
     commentList: commentListReducer,
     commentCreate:commentCreateReducer,
+    replyList:replyListReducer,
+
 
     replyCreate:replyCreateReducer,
 
@@ -38,9 +41,16 @@ const initialState = {
 
 const middleware = [thunk];
 
-const store = createStore(
-  reducer,initialState,
-  composeWithDevTools(applyMiddleware(...middleware))
-);
+// const store = createStore(
+//   reducer,initialState,
+//   composeWithDevTools(applyMiddleware(...middleware))
+// );
+
+const devTools =
+  process.env.REACT_APP_NODE_ENV === "production"
+    ? applyMiddleware(...middleware)
+    : composeWithDevTools(applyMiddleware(...middleware));
+
+const store = createStore(reducer, initialState, devTools);
 
 export default store

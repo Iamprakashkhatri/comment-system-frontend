@@ -13,6 +13,10 @@ import {
     REPLY_CREATE_SUCCESS,
     REPLY_CREATE_FAIL,
 
+    REPLY_LIST_REQUEST,
+    REPLY_LIST_SUCCESS,
+    REPLY_LIST_FAIL,
+
 } from '../constants/commentConstants'
 
 
@@ -114,4 +118,27 @@ export const createReply = (reply,comment) => async (dispatch,getState) => {
         })
     }
 }
+
+export const listReplies = (keyword = '') => async (dispatch) => {
+    try {
+        dispatch({ type: REPLY_LIST_REQUEST })
+
+        const { data } = await axios.get(`${API}/api/comments/comment-reply${keyword}`)
+        console.log('data',data)
+        dispatch({
+            type: REPLY_LIST_SUCCESS,
+            payload: data,
+        })
+
+    } catch (error) {
+        dispatch({
+            type: REPLY_LIST_FAIL,
+            payload: error.response && error.response.data.detail
+                ? error.response.data.detail
+                : error.message,
+        })
+
+    }
+}
+
 
